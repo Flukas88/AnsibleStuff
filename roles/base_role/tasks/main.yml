@@ -4,7 +4,7 @@
   - name: config domain 
     lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="ikigai.local"'
     notify:
-      -  restart network 
+      - restart network 
   - name: install the bind-utils
     yum: name=bind-utils state=installed
   - name: install the nfs utils 
@@ -16,10 +16,10 @@
   - name: config syslog for splunk (UDP)
     lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@prd-logs-0.ikigai.local:514"
     notify:
-      -  restart rsyslog 
+      - restart rsyslog 
   - name: install yum-presto
     yum: name=yum-presto state=installed
     notify:
-      -  restart yum-presto 
+      - restart yum-presto 
   - name: mountpoint /store 
     mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
