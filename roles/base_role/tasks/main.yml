@@ -1,10 +1,6 @@
 ---
   - name: install the epel repo
     yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm state=installed
-  - name: config domain 
-    lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="ikigai.local"'
-    notify:
-      - restart network 
   - name: install the bind-utils
     yum: name=bind-utils state=installed
   - name: install the nfs utils 
@@ -23,3 +19,7 @@
       - restart yum-presto 
   - name: mountpoint /store 
     mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
+  - name: config domain 
+    lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="ikigai.local"'
+    notify:
+      - restart network 
