@@ -1,0 +1,25 @@
+---
+  - name: install the epel repo
+    yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm state=installed
+  - name: config domain 
+    lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="ikigai.local"'
+    notify:
+      -  restart network 
+  - name: install the bind-utils
+    yum: name=bind-utils state=installed
+  - name: install the nfs utils 
+    yum: name=nfs-utils state=installed
+  - name: install the wget
+    yum: name=wget state=installed
+  - name: install the curl
+    yum: name=curl state=installed
+  - name: config syslog for splunk (UDP)
+    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="*.* @prd-logs-0.ikigai.local:514"
+    notify:
+      -  restart rsyslog 
+  - name: install yum-presto
+    yum: name=yum-presto state=installed
+    notify:
+      -  restart yum-presto 
+  - name: mountpoint /store 
+    mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present

@@ -1,0 +1,7 @@
+---
+- name: restart rsyslog
+  service: name=rsyslog state=restarted
+- name: restart yum-presto 
+  service: name=yum-presto state=restarted
+- name: restart network
+  service: name=network state=restarted
