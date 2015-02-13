@@ -17,9 +17,9 @@
     yum: name=yum-presto state=installed
     notify:
       - restart yum-presto 
-  - name: mountpoint /store 
-    mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
   - name: config domain 
     lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="ikigai.local"'
     notify:
       - restart network 
+  - name: mountpoint /store 
+    mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
