@@ -10,7 +10,7 @@
   - name: install the curl
     yum: name=curl state=installed
   - name: config syslog for splunk (UDP)
-    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@prd-logs-0.ikigai.local:514"
+    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@prd-logs-0:514"
     notify:
       - restart rsyslog 
   - name: install yum-presto
