@@ -9,10 +9,6 @@
     yum: name=wget state=installed
   - name: install the curl
     yum: name=curl state=installed
-  - name: config syslog for splunk (UDP)
-    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@prd-logs-0:514"
-    notify:
-      - restart rsyslog 
   - name: install yum-presto
     yum: name=yum-presto state=installed
     notify:
@@ -23,3 +19,7 @@
       - restart network 
   - name: mountpoint /store 
     mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
+  - name: config syslog for splunk (UDP)
+    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@prd-logs-0:514"
+    notify:
+      - restart rsyslog 
