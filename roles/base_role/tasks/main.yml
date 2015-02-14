@@ -25,3 +25,6 @@
       - restart rsyslog 
   - name: install bashrc
     copy: src=template.bashrc dest=/root/.bashrc owner=root group=root mode=0644
+  - name: Create temp file for some later task  
+    command: mktemp /tmp/ansible.working  
+    register: tmp_file  
