@@ -14,3 +14,4 @@ What it does is
       mountpoint for  /store (NFS)
       config syslog for splunk (UDP)
       install bashrc
+      set motd
