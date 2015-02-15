@@ -11,7 +11,7 @@ What it does is
       install the curl
       install yum-presto
       config domain 
-      mountpoint for  /store (NFS)
-      config syslog for splunk (UDP)
+      mountpoint for /store (NFS)
+      config syslog for rsyslog (UDP)
       install bashrc
       set motd
