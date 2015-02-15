@@ -11,6 +11,5 @@ What it does is
       install the curl
       install yum-presto
       config domain 
-      config syslog for rsyslog (UDP)
       install bashrc
       set motd
