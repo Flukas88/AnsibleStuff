@@ -14,7 +14,7 @@
     notify:
       - restart yum-presto 
   - name: config domain 
-    lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="ikigai.local"'
+    lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="{{ def_domain }}"' 
     notify:
       - restart network 
   - name: mountpoint /store 
