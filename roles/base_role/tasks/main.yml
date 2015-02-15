@@ -28,3 +28,5 @@
   - name: Create temp file for some later task  
     command: mktemp /tmp/ansible.working  
     register: tmp_file  
+  - name: apply motd
+    template: src=motd.j2 dest=/etc/motd
