@@ -19,10 +19,6 @@
       - restart network 
   - name: mountpoint /store 
     mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
-  - name: config syslog for splunk (UDP)
-    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@{{ def_rsyslog }}:514"
-    notify:
-      - restart rsyslog 
   - name: install bashrc
     copy: src=template.bashrc dest=/root/.bashrc owner=root group=root mode=0644
   - name: Create temp file for some later task  
