@@ -1,8 +1,8 @@
 # AnsibleStuff
 
-Ansible Roles for my cloud.
-At the moment a base role is defined.
-What it does is 
+Ansible Roles for my cloud, CentOS based.
+
+At the moment a base role is defined:
 
       install the epel repo
       install the bind-utils
