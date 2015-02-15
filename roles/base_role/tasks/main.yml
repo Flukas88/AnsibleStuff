@@ -20,7 +20,7 @@
   - name: mountpoint /store 
     mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
   - name: config syslog for splunk (UDP)
-    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@prd-logs-0:514"
+    lineinfile: dest=/etc/rsyslog.conf regexp="^#*.* @@remote-host:514*$" line="@{{ def_rsyslog }}:514"
     notify:
       - restart rsyslog 
   - name: install bashrc
