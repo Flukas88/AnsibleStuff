@@ -17,8 +17,6 @@
     lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 insertafter="^DNS1=.*$" line='DOMAIN="{{ def_domain }}"' 
     notify:
       - restart network 
-  - name: mountpoint /store 
-    mount: name=/store src="192.168.122.1:/store/{{ ansible_hostname }}" fstype=nfs4 state=present
   - name: install bashrc
     copy: src=template.bashrc dest=/root/.bashrc owner=root group=root mode=0644
   - name: Create temp file for some later task  
