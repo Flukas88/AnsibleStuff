@@ -1,6 +1,6 @@
 ---
   - name: install the epel repo
-    yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm state=installed
+    yum: name=epel-release
   - name: install the bind-utils
     yum: name=bind-utils state=installed
   - name: install the nfs utils 
