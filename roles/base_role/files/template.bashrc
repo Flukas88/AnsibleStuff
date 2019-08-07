@@ -10,4 +10,5 @@ alias cls="clear"
 alias df="df -h"
 alias free="free -mt"
 alias grep="grep --color=auto"
-alias update_system="yum update -y"
+alias update_system="yum upgrade -y"
+alias vi=vim
