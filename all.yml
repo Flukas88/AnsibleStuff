@@ -1,5 +1,5 @@
 ---
 
-- hosts: web 
+- hosts: pv_cloud 
   roles:
     - role: base_role
