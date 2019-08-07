@@ -5,10 +5,12 @@
     yum: name=bind-utils state=installed
   - name: install the nfs utils 
     yum: name=nfs-utils state=installed
-  - name: install the wget
+  - name: install the wget software
     yum: name=wget state=installed
-  - name: install the curl
+  - name: install the curl software
     yum: name=curl state=installed
+  - name: install git
+    yum: name=git state=installed
   - name: install yum-presto
     yum: name=yum-presto state=installed
     notify:
